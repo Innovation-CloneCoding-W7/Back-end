@@ -20,10 +20,11 @@ public class Product {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String productName;
 
-    @ManyToOne()
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATEGORY_ID", nullable = false)
+    private Category category;
 
     @Column(nullable = false)
     private int price;
@@ -34,8 +35,11 @@ public class Product {
     @Column(nullable = false)
     private String detail;
 
-    @ManyToOne
-    private List<composition> composition;
+//    @OneToMany(mappedBy = "")
+//    private List<Composition> composition;
+
+    @Column
+    private String composition;
 
     @Column(nullable = false)
     private String info;
@@ -52,17 +56,16 @@ public class Product {
     @Column(nullable = false)
     private String origin;
 
-    @OneToMany
-    private List<applicableModels> applicableModels;
+//    @OneToMany
+//    private List<applicableModels> applicableModels;
+
+    @Column
+    private String applicableModels;
 
     @Column(nullable = false)
     private String releaseDate;
 
     @Column(nullable = false)
     private String size;
-
-
-
-
 
 }
