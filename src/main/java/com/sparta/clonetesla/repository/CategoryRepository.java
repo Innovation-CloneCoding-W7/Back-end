@@ -1,4 +1,4 @@
 package com.sparta.clonetesla.repository;
 
-public class CategoryRepository {
+public interface CategoryRepository {
 }

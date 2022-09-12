@@ -1,4 +1,4 @@
 package com.sparta.clonetesla.repository;
 
-public class MemberRepository {
+public interface MemberRepository {
 }
