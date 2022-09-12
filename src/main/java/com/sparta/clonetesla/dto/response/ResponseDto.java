@@ -1,4 +1,4 @@
-package com.sparta.clonetesla.controller.response;
+package com.sparta.clonetesla.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
