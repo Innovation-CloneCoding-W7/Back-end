@@ -22,18 +22,18 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/api/member/signup")
+    @PostMapping("/member/signup")
     public ResponseDto<?> signup(@RequestBody @Valid MemberRequestDto requestDto) {
 //        System.out.println(requestDto.getMbti());
         return memberService.signup(requestDto);
     }
 
-    @PostMapping("/api/member/login")
+    @PostMapping("/member/login")
     public ResponseDto<?> login(@RequestBody @Valid LoginRequestDto requestDto, HttpServletResponse response){
         return memberService.login(requestDto,response);
     }
 
-    @PostMapping("/api/member/logout")
+    @PostMapping("/member/logout")
     public ResponseDto<?> logout(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         return memberService.logout(userDetails);
     }

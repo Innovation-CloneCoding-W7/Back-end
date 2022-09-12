@@ -72,11 +72,10 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll() // 추가
-                .antMatchers("/api/member/**").permitAll()
-                .antMatchers("/api/post/**").permitAll()
-                .antMatchers("/api/comment/**").permitAll()
-                .antMatchers("/api/review/**").permitAll()
-                .antMatchers("/api/participation/**").permitAll()
+                .antMatchers("/member/**").permitAll()
+                .antMatchers("/product/**").permitAll()
+                .antMatchers("/cart/**").permitAll()
+                .antMatchers("/shop/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
