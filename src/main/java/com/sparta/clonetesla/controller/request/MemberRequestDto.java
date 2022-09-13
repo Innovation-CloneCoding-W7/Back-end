@@ -28,4 +28,5 @@ public class MemberRequestDto {
 
     @NotBlank
     private String email;
+
 }
