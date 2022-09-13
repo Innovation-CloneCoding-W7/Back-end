@@ -1,4 +1,6 @@
 package com.sparta.clonetesla.shared;
 
-public class Authority {
+public enum Authority {
+    ROLE_MEMBER,
+    ROLE_GUEST
 }

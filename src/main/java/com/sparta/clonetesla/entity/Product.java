@@ -38,9 +38,6 @@ public class Product {
     @Column(nullable = false)
     private String detail;
 
-//    @OneToMany(mappedBy = "")
-//    private List<Composition> composition;
-
     @Column
     private String composition;
 
@@ -58,9 +55,6 @@ public class Product {
 
     @Column(nullable = false)
     private String origin;
-
-//    @OneToMany
-//    private List<applicableModels> applicableModels;
 
     @Column
     private String applicableModels;
