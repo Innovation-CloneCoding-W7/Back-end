@@ -1,5 +1,6 @@
 package com.sparta.clonetesla.entity;
 
+import com.sparta.clonetesla.entity.Member;
 import com.sparta.clonetesla.shared.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Data;
