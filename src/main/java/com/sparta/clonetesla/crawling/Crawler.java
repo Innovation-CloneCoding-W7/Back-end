@@ -30,7 +30,7 @@ public class Crawler {
             //4. Category 테이블 DB에 삽입
             for(int i = 0; i < temp.length; i++){
                 Category category = Category.builder()
-                        .category(temp[i])
+                        .categoryName(temp[i])
                         .build();
 //                categoryRepository.save(category);
             }
