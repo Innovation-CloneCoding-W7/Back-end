@@ -12,8 +12,8 @@ import java.io.IOException;
 
 @RequiredArgsConstructor
 public class Crawler {
-//    private static final CategoryRepository categoryRepository;
-//    private static final ProductRepository productRepository;
+//    private final CategoryRepository categoryRepository;
+//    private final ProductRepository productRepository;
 
     public static void main(String args[]){
         try {
@@ -32,7 +32,7 @@ public class Crawler {
                 Category category = Category.builder()
                         .category(temp[i])
                         .build();
-//                categoryRepository
+//                categoryRepository.save(category);
             }
 
         } catch (IOException e) {
