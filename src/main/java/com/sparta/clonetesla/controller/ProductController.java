@@ -25,6 +25,6 @@ public class ProductController {
 
     @RequestMapping(value = "/shop/product/{productName}", method = RequestMethod.POST)
     public ResponseDto<?> postProductDetail(@PathVariable String productName, @RequestBody ProductRequestDto ProductRequestDto) {
-        return productService.postProductDetail(productName, ProductRequestDto);
+        return productService.postProductDetail(ProductRequestDto);
     }
 }

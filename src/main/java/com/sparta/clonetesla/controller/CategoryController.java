@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 public class CategoryController {
-//    private final CategoryService categoryService;
-//
-//    @RequestMapping(value = "/shop/category", method = RequestMethod.GET)
-//    public ResponseDto<?> getCategories() {
-//        return categoryService.getCategories();
-//    }
+    private final CategoryService categoryService;
+
+    @RequestMapping(value = "/shop/category", method = RequestMethod.GET)
+    public ResponseDto<?> getCategories() {
+        return categoryService.getCategories();
+    }
 
 //    @RequestMapping(value = "/shop/category/{categoryName}", method = RequestMethod.GET)
 //    public ResponseDto<?> getCategory(@PathVariable String categoryName) {
