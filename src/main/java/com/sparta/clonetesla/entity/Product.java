@@ -65,5 +65,10 @@ public class Product {
     @Column(nullable = false)
     private String size;
 
+//    @JoinColumn(name = "cart")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Cart cart;
+
+
 }
 

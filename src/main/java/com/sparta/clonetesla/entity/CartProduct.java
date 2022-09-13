@@ -1,43 +1,41 @@
-package com.sparta.clonetesla.entity;
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.*;
-
-@Entity
-@NoArgsConstructor
-@Getter
-@Setter
-public class CartProduct extends Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cartProductId;
-
-    @Column(nullable = false)
-    private String nickName;
-
-    @Column(nullable = false)
-    private String productName;
-
-    @Column(nullable = false)
-    private int price;
-
-    @Column(nullable = false)
-    private int quantity;
-
-    @Column(nullable = false)
-    private String imageUrl;
-
-    public CartProduct(String nickName,String productName,int price,int quantity,String imageUrl){
-        this.nickName = nickName;
-        this.productName = productName;
-        this.price = price;
-        this.quantity = quantity;
-        this.imageUrl = imageUrl;
-    }
-}
+//package com.sparta.clonetesla.entity;
+//
+//import lombok.Getter;
+//import lombok.NoArgsConstructor;
+//import lombok.Setter;
+//
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.*;
+//
+//@Entity
+//@NoArgsConstructor
+//@Getter
+//@Setter
+//public class CartProduct {
+//    @Id
+//    @Column(name = "id", nullable = false)
+//    private Long CartProductId;
+//    private String nickName;
+//    private String productName;
+//    private int price;
+//    private int quantity;
+//    private String imageUrl;
+//
+//    public static CartProduct createCartProduct(String nickName,String productName,int price,int quantity,String imageUrl){
+//       CartProduct cartProduct = new CartProduct();
+//       cartProduct.setProductName(productName);
+//       cartProduct.setPrice(price);
+//       cartProduct.setNickName(nickName);
+//       cartProduct.setQuantity(quantity);
+//       cartProduct.setImageUrl(imageUrl);
+//
+//       return cartProduct;
+//    }
+//
+//    public static CartProduct createCartProduct(Cart cart, CartProduct cartProduct, int quantity) {
+//    }
+//
+//    public void addCount(int quantity) {
+//    }
+//}

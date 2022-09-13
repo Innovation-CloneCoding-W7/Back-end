@@ -1,20 +1,17 @@
 package com.sparta.clonetesla.entity;
 
 import lombok.*;
-import org.hibernate.mapping.ToOne;
-import org.springframework.security.core.userdetails.User;
-
+import lombok.Builder;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
 @Entity
 public class Cart extends Timestamped{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CartId;
@@ -24,7 +21,33 @@ public class Cart extends Timestamped{
     private Member member;
 
     @Column
-    @OneToMany(fetch = FetchType.LAZY) // 카트에 여러가지 상품이 들어감
-    private List<CartProduct> cartProductList;
+    private String nickName;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    Product cartProductDto;
+
+    public static Cart createCart (Member member) {
+        Cart cart = new Cart();
+        cart.member =member();
+        return cart;
+    }
+
+    private static Member member() {
+        return null;
+    }
+
+
+//    private Long id;
+//    private String productName;
+//    private int price;
+//    private int quantity;
+//    private String imageUrl;
+//    private Cart(CartBuilder builder){
+//    this.id = builder.id;
+//    this.productName = builder.productName;
+//    this.price = builder.price;
+//    this.quantity = builder.quantity;
+//    this.imageUrl = builder.imageUrl;
+//    }
 
 }
