@@ -20,7 +20,7 @@ public class Category {
     private Long id;
 
     @Column(nullable = false)
-    private String category;
+    private String categoryName;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;

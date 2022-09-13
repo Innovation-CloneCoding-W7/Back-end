@@ -13,18 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class ProductController {
 
-//    private final ProductService productService;
-//
-//    @RequestMapping(value = "/product/{category}", method = RequestMethod.GET)
-//    public ResponseDto<?> getCategoryProduct(@PathVariable String categoryName) {
-//        return productService.getCategoryProduct(categoryName);
-//    }
-//
-//    @RequestMapping(value = "/shop/product/{productName}", method = RequestMethod.GET)
-//    public ResponseDto<?> getProductDetail(@PathVariable String productName) {
-//        return productService.getProductDetail(productName);
-//    }
+    private final ProductService productService;
 
+    @RequestMapping(value = "/product/{category}", method = RequestMethod.GET)
+    public ResponseDto<?> getProductByCategory(@PathVariable String categoryName) {
+        return productService.getProductByCategory(categoryName);
+    }
 
-
+    @RequestMapping(value = "/shop/product/{productName}", method = RequestMethod.GET)
+    public ResponseDto<?> getProductDetail(@PathVariable String productName) {
+        return productService.getProductDetail(productName);
+    }
 }
