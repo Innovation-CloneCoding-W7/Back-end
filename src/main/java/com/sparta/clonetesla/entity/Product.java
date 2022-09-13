@@ -20,6 +20,9 @@ public class Product {
     private Long id;
 
     @Column(nullable = false)
+    private String imageUrl;
+
+    @Column(nullable = false)
     private String productName;
 
     @ManyToOne(fetch = FetchType.LAZY)
