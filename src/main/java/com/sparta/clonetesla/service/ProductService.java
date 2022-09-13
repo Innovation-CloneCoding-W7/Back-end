@@ -1,5 +1,6 @@
 package com.sparta.clonetesla.service;
 
+import com.sparta.clonetesla.controller.request.ProductRequestDto;
 import com.sparta.clonetesla.controller.response.CategoryResponseDto;
 import com.sparta.clonetesla.controller.response.ProductResponseDto;
 import com.sparta.clonetesla.controller.response.ResponseDto;
@@ -76,7 +77,54 @@ public class ProductService {
                         .applicableModels(product.getApplicableModels())
                         .releaseDate(product.getReleaseDate())
                         .size(product.getSize())
+                        .build()
         );
-
     }
+
+    public ResponseDto<?> postProductDetail(ProductRequestDto productRequestDto) {
+        if (null == productRequestDto) {
+            return ResponseDto.fail("BAD_REQUEST", "Data is none");
+        }
+
+        Product product = Product.builder()
+                .id(productRequestDto.getId())
+                .imageUrl(productRequestDto.getImageUrl())
+                .productName(productRequestDto.getProductName())
+                .category (productRequestDto.getCategory())
+                .price(productRequestDto.getPrice())
+                .maxQuantity(productRequestDto.getMaxQuantity())
+                .detail(productRequestDto.getDetail())
+                .composition(productRequestDto.getComposition())
+                .info(productRequestDto.getInfo())
+                .caution(productRequestDto.getCaution())
+                .partNumber(productRequestDto.getPartNumber())
+                .importedBy(productRequestDto.getImportedBy())
+                .origin(productRequestDto.getOrigin())
+                .applicableModels(productRequestDto.getApplicableModels())
+                .releaseDate(productRequestDto.getReleaseDate())
+                .size(productRequestDto.getSize())
+                .build();
+        productRepository.save(product);
+
+        return ResponseDto.success(
+                ProductResponseDto.builder()
+                        .id(product.getId())
+                        .imageUrl(product.getImageUrl())
+                        .productName(product.getProductName())
+                        .price(product.getPrice())
+                        .maxQuantity(product.getMaxQuantity())
+                        .detail(product.getDetail())
+                        .composition(product.getComposition())
+                        .info(product.getInfo())
+                        .caution(product.getCaution())
+                        .partNumber(product.getPartNumber())
+                        .importedBy(product.getImportedBy())
+                        .origin(product.getOrigin())
+                        .applicableModels(product.getApplicableModels())
+                        .releaseDate(product.getReleaseDate())
+                        .size(product.getSize())
+                        .build()
+        );
+    }
+
 }
