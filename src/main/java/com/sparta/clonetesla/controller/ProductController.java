@@ -16,8 +16,8 @@ public class ProductController {
     private final ProductService productService;
 
     @RequestMapping(value = "/product/{category}", method = RequestMethod.GET)
-    public ResponseDto<?> getCategoryProduct(@PathVariable String categoryName) {
-        return productService.getCategoryProduct(categoryName);
+    public ResponseDto<?> getProductByCategory(@PathVariable String categoryName) {
+        return productService.getProductByCategory(categoryName);
     }
 
     @RequestMapping(value = "/shop/product/{productName}", method = RequestMethod.GET)
