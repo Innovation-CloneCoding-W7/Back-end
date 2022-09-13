@@ -1,9 +1,8 @@
 package com.sparta.clonetesla.service;
 
-
 import com.sparta.clonetesla.controller.request.LoginRequestDto;
 import com.sparta.clonetesla.controller.request.MemberRequestDto;
-import com.sparta.clonetesla.dto.request.TokenDto;
+import com.sparta.clonetesla.controller.request.TokenDto;
 import com.sparta.clonetesla.controller.response.MemberResponseDto;
 import com.sparta.clonetesla.controller.response.ResponseDto;
 import com.sparta.clonetesla.entity.Member;
