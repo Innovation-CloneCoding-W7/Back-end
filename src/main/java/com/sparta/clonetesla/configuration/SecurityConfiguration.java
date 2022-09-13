@@ -70,8 +70,14 @@ public class SecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
                 .and()
+                .headers()
+                .frameOptions()
+                .sameOrigin()
+
+                .and()
                 .authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll() // 추가
+                .antMatchers("/h2-console/*").permitAll()
                 .antMatchers("/member/**").permitAll()
                 .antMatchers("/product/**").permitAll()
                 .antMatchers("/cart/**").permitAll()

@@ -16,32 +16,32 @@ import java.util.List;
 @ResponseBody
 @RequestMapping("/cart/*")
 public class CartController {
-
-    private final CartService cartService;
-
-    public CartController(CartService cartService) {
-        this.cartService = cartService;
-    }
-
-
-    // 상품 추가
-    @PostMapping("/cart/{productName}")
-    public void addItem (@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody CartRequestDto requestDto) {
-        cartService.addItem(userDetails, requestDto);
-    }
-
-    // Cart 조회
-    @GetMapping("/cart")
-    public List<CartResponseDto> showCart(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return cartService.showCart(userDetails);
-    }
-
-
-    // 상품 삭제
-    @DeleteMapping("/cart/{productName}")
-    public void deleteItem(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable String productName) {
-        cartService.deleteItem(userDetails, productName);
-    }
+//
+//    private final CartService cartService;
+//
+//    public CartController(CartService cartService) {
+//        this.cartService = cartService;
+//    }
+//
+//
+//    // 상품 추가
+//    @PostMapping("/cart/{productName}")
+//    public void addItem (@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody CartRequestDto requestDto) {
+//        cartService.addItem(userDetails, requestDto);
+//    }
+//
+//    // Cart 조회
+//    @GetMapping("/cart")
+//    public List<CartResponseDto> showCart(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+//        return cartService.showCart(userDetails);
+//    }
+//
+//
+//    // 상품 삭제
+//    @DeleteMapping("/cart/{productName}")
+//    public void deleteItem(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable String productName) {
+//        cartService.deleteItem(userDetails, productName);
+//    }
 }
 //    CartService cartService;
 //    //회원일 경우
