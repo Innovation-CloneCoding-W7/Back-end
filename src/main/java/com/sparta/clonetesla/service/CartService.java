@@ -6,32 +6,50 @@
 //import com.sparta.clonetesla.entity.*;
 //import com.sparta.clonetesla.repository.CartProductRepository;
 //import com.sparta.clonetesla.repository.CartRepository;
+//import com.sparta.clonetesla.repository.MemberRepository;
+//import com.sparta.clonetesla.repository.ProductRepository;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.stereotype.Service;
 //import org.springframework.transaction.annotation.Transactional;
-//import org.springframework.web.bind.annotation.RequestBody;
 //
 //import java.util.ArrayList;
 //import java.util.List;
 //import java.util.Optional;
-//
 //
 //@RequiredArgsConstructor
 //@Service
 //public class CartService {
 //    private final CartRepository cartRepository;
 //    private final CartProductRepository cartProductRepository;
+//    private final MemberRepository memberRepository;
+//    private final ProductRepository productRepository;
 //
 //
 //    // 상품 추가
 //    @Transactional
-//    public ResponseDto<Object> addItem(UserDetailsImpl userDetails, @RequestBody CartRequestDto requestDto) {
+//    public Long addItem(UserDetailsImpl userDetails, CartRequestDto requestDto) {
 //
 //        Member member = userDetails.getMember();
 //        int quantity = requestDto.getQuantity();
 //
 //        Cart cart = cartRepository.findByNickName(member.getNickname());
-//        List<CartProduct> cartProductList = cart.getCartProductList();
+//        if (cart == null) {
+//            cart = cart.createCart(member);
+//            cartRepository.save(cart);
+//        }
+//
+//        Product product = productRepository.findByProductName(requestDto.getProductName());
+//        CartProduct cartProduct = cartProductRepository.findByCartProductIdAndId(cart.getCartId(), product.get().getId());
+//
+//        if (cartProduct == null) {
+//            cartProduct = CartProduct.createCartProduct(cart, cartProduct, requestDto.getQuantity());
+//            cartProductRepository.save(cartProduct);
+//        } else {
+//            cartProduct.addCount(requestDto.getQuantity());
+//        }
+//        return cartProduct.getCartProductId();
+//
+//    }
 //
 //        Cart addCart = Cart.builder()
 //                           .member(member)
