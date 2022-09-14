@@ -35,7 +35,7 @@ public class Product {
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
-
+    
 
 //    @JoinColumn(name = "cart")
 //    @ManyToOne(fetch = FetchType.LAZY)

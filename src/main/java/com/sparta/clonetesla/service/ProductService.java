@@ -23,6 +23,7 @@ public class ProductService {
     @Transactional(readOnly = true)
     public ResponseDto<?> getProductsByCategory(String category) {
         if (category == null) {
+            System.out.println(category);
             return ResponseDto.fail("NOT_FOUND", "This page does not exist.");
         }
 
@@ -60,6 +61,7 @@ public class ProductService {
                         .id(product.getId())
                         .imageUrl(product.getImageUrl())
                         .productName(product.getProductName())
+                        .category(product.getCategory())
                         .price(product.getPrice())
                         .maxQuantity(product.getMaxQuantity())
                         .content(product.getContent())
@@ -67,33 +69,34 @@ public class ProductService {
         );
     }
 
-//    public ResponseDto<?> postProductDetail(ProductRequestDto productRequestDto) {
-//        if (null == productRequestDto) {
-//            return ResponseDto.fail("BAD_REQUEST", "Data is none");
-//        }
-//
-//        Product product = Product.builder()
-//                .id(productRequestDto.getId())
-//                .imageUrl(productRequestDto.getImageUrl())
-//                .productName(productRequestDto.getProductName())
-//                .category (productRequestDto.getCategory())
-//                .price(productRequestDto.getPrice())
-//                .maxQuantity(productRequestDto.getMaxQuantity())
-//                .content(productRequestDto.getContent())
-//
-//                .build();
-//        productRepository.save(product);
-//
-//        return ResponseDto.success(
-//                ProductResponseDto.builder()
-//                        .id(product.getId())
-//                        .imageUrl(product.getImageUrl())
-//                        .productName(product.getProductName())
-//                        .price(product.getPrice())
-//                        .maxQuantity(product.getMaxQuantity())
-//                        .content(product.getContent())
-//                        .build()
-//        );
-//    }
+    public ResponseDto<?> postProductDetail(ProductRequestDto productRequestDto) {
+        if (null == productRequestDto) {
+            return ResponseDto.fail("BAD_REQUEST", "Data is none");
+        }
+
+        Product product = Product.builder()
+                .id(productRequestDto.getId())
+                .imageUrl(productRequestDto.getImageUrl())
+                .productName(productRequestDto.getProductName())
+                .category(productRequestDto.getCategory())
+                .price(productRequestDto.getPrice())
+                .maxQuantity(productRequestDto.getMaxQuantity())
+                .content(productRequestDto.getContent())
+
+                .build();
+        productRepository.save(product);
+
+        return ResponseDto.success(
+                ProductResponseDto.builder()
+                        .id(product.getId())
+                        .imageUrl(product.getImageUrl())
+                        .productName(product.getProductName())
+                        .category(product.getCategory())
+                        .price(product.getPrice())
+                        .maxQuantity(product.getMaxQuantity())
+                        .content(product.getContent())
+                        .build()
+        );
+    }
 
 }

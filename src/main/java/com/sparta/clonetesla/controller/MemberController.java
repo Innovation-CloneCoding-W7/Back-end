@@ -30,6 +30,7 @@ public class MemberController {
 
     @PostMapping("/member/login")
     public ResponseDto<?> login(@RequestBody @Valid LoginRequestDto requestDto, HttpServletResponse response){
+        System.out.println(requestDto.getNickname());
         return memberService.login(requestDto,response);
     }
 
