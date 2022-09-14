@@ -25,9 +25,8 @@ public class Product {
     @Column(nullable = false)
     private String productName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CATEGORY_ID", nullable = false)
-    private Category category;
+    @Column(nullable = false)
+    private String category;
 
     @Column(nullable = false)
     private int price;
@@ -36,37 +35,8 @@ public class Product {
     private int maxQuantity;
 
     @Column(nullable = false)
-    private String detail;
-
-    @Column
-    private String composition;
-
-    @Column(nullable = false)
-    private String info;
-
-    @Column(nullable = false)
-    private String caution;
-
-    @Column(nullable = false)
-    private String partNumber;
-
-    @Column(nullable = false)
-    private String importedBy;
-
-    @Column(nullable = false)
     private String content;
-
-    @Column(nullable = false)
-    private String origin;
-
-    @Column
-    private String applicableModels;
-
-    @Column(nullable = false)
-    private String releaseDate;
-
-    @Column(nullable = false)
-    private String size;
+    
 
 //    @JoinColumn(name = "cart")
 //    @ManyToOne(fetch = FetchType.LAZY)
