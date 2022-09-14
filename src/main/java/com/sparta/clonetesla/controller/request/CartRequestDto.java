@@ -8,7 +8,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartRequestDto {
-    private String productName;
+    private Long itemId;
     private int quantity;
+
+    //    private String productName;
+//    private int quantity;
 
 }
