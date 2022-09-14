@@ -1,21 +1,18 @@
 package com.sparta.clonetesla.service;
 
-import com.sparta.clonetesla.Exception.CustomException;
-import com.sparta.clonetesla.Exception.ErrorCode;
 import com.sparta.clonetesla.controller.request.CartRequestDto;
 import com.sparta.clonetesla.controller.response.CartResponseDto;
 import com.sparta.clonetesla.controller.response.ResponseDto;
 import com.sparta.clonetesla.entity.*;
-
+import com.sparta.clonetesla.exception.CustomException;
+import com.sparta.clonetesla.exception.ErrorCode;
 import com.sparta.clonetesla.repository.CartItemRepository;
 import com.sparta.clonetesla.repository.CartRepository;
-
 import com.sparta.clonetesla.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -98,67 +95,5 @@ public class CartService {
         cartItemRepository.deleteById(cartItemId);
         ResponseDto.success("Delete Success");
     }
-
-
-
-
-
-//    private final CartRepository cartRepository;
-//
-//    private  final CartProductDto cartProductDto;
-//
-//
-//    // 상품 추가
-//    @Transactional
-//    public void addItem(UserDetailsImpl userDetails, CartRequestDto requestDto) {
-//
-//        Member member = userDetails.getMember();
-//        int quantity = requestDto.getQuantity();
-//
-//        Cart cart = new Cart(member,quantity);
-//        cartRepository.save(cart);
-//        ResponseDto.success("add Success");
-//        }
-////
-////    Cart addCart = Cart.builder()
-////            .member(member)
-////            .quantity(quantity)
-////            .build();
-////        cartRepository.save(addCart);
-////
-//
-//
-//    // Cart 조회
-//        public CartResponseDto showCart (UserDetailsImpl userDetails){
-//            Member member = userDetails.getMember();
-//
-//            Cart cart = cartRepository.findByMember_Id(member.getId());
-//            List<Cart> productList = (List<Cart>) cart.getCartProductDto();
-//            List<CartResponseDto> CartResponseDtos = new ArrayList<>();
-//            for(int i = 0; i < productList.size(); i++) {
-//                Long id = productList.get(i).getCartId();
-//                Product quantity = productList.get(i).getCartProductDto();
-////                Product product = CartRepository.findByProductName(id);
-//                CartResponseDto newDto = new CartResponseDto(id, quantity);
-//                CartResponseDtos.add(newDto);
-//            } return (CartResponseDto) CartResponseDtos;
-//
-//            }
-//
-//
-//        // 상품 삭제
-//        public void deleteItem(UserDetailsImpl userDetails, String productName) {
-//            Member member = userDetails.getMember();
-//
-//            List<Cart> carts = cartRepository.findByMember(member);
-//            Product product = cartProductDto.findByProductName(productName);
-//            cartRepository.deleteAll(carts,product);
-//
-//            ResponseDto.success("sDelete Success");
-////            CartProduct cartProduct = cartProductRepository.findByProductName(productName);
-////            Cart cart = cartRepository.findByNickNameAndCartProduct(member,cartProduct);
-////            cartRepository.delete(cart);
-////            ResponseDto.success("Delete Success");
-//        }
 }
 
