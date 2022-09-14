@@ -12,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
 public class Product {
 
     @Id
@@ -34,7 +33,7 @@ public class Product {
     @Column(nullable = false)
     private int maxQuantity;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
 
