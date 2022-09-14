@@ -56,7 +56,7 @@ public class CartService {
     public void saveItem(UserDetailsImpl userDetails, @RequestBody CartRequestDto requestDto) {
         Member user = userDetails.getMember();
         int quantity = requestDto.getQuantity();
-        Optional<Product> item = itemRepository.findById(requestDto.getItemId());
+        Optional<Product> item = itemRepository.findByProductName(requestDto.getProductName());
 
         if (quantity == 0) {
             throw new CustomException(ErrorCode.NOT_FOUND_QUANTITY);
@@ -80,7 +80,7 @@ public class CartService {
 //            cartItems.get(cartItemId).setQuantity(cartItems.get(cartItemId).getQuantity() + quantity);
 //            cartItemRepository.save(cartItems.get(cartItemId));
 //        } else {
-            CartItem cartItem = new CartItem(user.getId(), item.get().getProductId(), quantity);
+            CartItem cartItem = new CartItem(user.getId(), item.get().getId(), quantity);
             cartItemRepository.save(cartItem);
         ResponseDto.success("add Success");
     }

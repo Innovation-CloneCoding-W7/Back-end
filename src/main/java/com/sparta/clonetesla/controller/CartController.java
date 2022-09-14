@@ -23,9 +23,8 @@ public class CartController {
 
     private final CartService cartService;
 
-
     // 상품 추가
-    @PostMapping("/cart/add")
+    @PostMapping("/cart")
     public void saveItem(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody CartRequestDto requestDto) {
         if(userDetails == null){
             throw new CustomException(ErrorCode.UNAUTHORIZED);

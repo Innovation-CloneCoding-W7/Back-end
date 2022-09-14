@@ -13,18 +13,19 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @RequestMapping(value = "/product/{category}", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/category/{categoryName}", method = RequestMethod.GET)
     public ResponseDto<?> getProductByCategory(@PathVariable String categoryName) {
-        return productService.getProductByCategory(categoryName);
+        return productService.getProductsByCategory(categoryName);
     }
 
-    @RequestMapping(value = "/shop/product/{productName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/{productName}", method = RequestMethod.GET)
     public ResponseDto<?> getProductDetail(@PathVariable String productName) {
         return productService.getProductDetail(productName);
     }
 
-    @RequestMapping(value = "/shop/product/{productName}", method = RequestMethod.POST)
-    public ResponseDto<?> postProductDetail(@PathVariable String productName, @RequestBody ProductRequestDto ProductRequestDto) {
+    @RequestMapping(value = "/product", method = RequestMethod.POST)
+    public ResponseDto<?> postProductDetail(@RequestBody ProductRequestDto ProductRequestDto) {
         return productService.postProductDetail(ProductRequestDto);
     }
+
 }

@@ -26,13 +26,9 @@ public class CartItem {
     @Column(nullable = false)
     private int quantity;
 
-
-    public CartItem(Long userId, Long productId, int quantity, String imageUrl) {
+    public CartItem(Long userId, Long productId, int quantity) {
         this.userId = userId;
         this.productId = productId;
         this.quantity = quantity;
-    }
-
-    public CartItem(Long id, Long productId, int quantity) {
     }
 }

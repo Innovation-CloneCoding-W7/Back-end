@@ -86,6 +86,7 @@ public class SecurityConfiguration {
                 .antMatchers("/product/**").permitAll()
                 .antMatchers("/cart/**").permitAll()
                 .antMatchers("/shop/**").permitAll()
+                .antMatchers("/excel/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
