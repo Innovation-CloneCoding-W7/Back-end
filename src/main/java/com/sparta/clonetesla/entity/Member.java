@@ -9,6 +9,8 @@ import org.hibernate.Hibernate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Builder
@@ -34,6 +36,9 @@ public class Member extends Timestamped {
     @Column(nullable = false)
     @JsonIgnore
     private String password;
+
+    @OneToMany(mappedBy="cartProductDto", fetch = FetchType.LAZY)
+    private List<Cart> carts = new ArrayList<>();
 
     // 입력으로 들어오는 Object가 Member와 같은지 체크
     @Override

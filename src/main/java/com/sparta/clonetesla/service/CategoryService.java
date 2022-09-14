@@ -3,7 +3,7 @@ package com.sparta.clonetesla.service;
 import com.sparta.clonetesla.controller.response.CategoryResponseDto;
 import com.sparta.clonetesla.controller.response.ResponseDto;
 import com.sparta.clonetesla.entity.Category;
-import com.sparta.clonetesla.repository.CartRepository;
+//import com.sparta.clonetesla.repository.CartRepository;
 import com.sparta.clonetesla.repository.CategoryRepository;
 import com.sparta.clonetesla.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
-    private final CartRepository cartRepository;
+//    private final CartRepository cartRepository;
 
     @Transactional(readOnly = true)
     public Category isPresentCategory(String categoryName) {
