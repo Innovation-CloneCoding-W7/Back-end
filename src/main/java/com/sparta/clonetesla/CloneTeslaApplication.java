@@ -1,9 +1,6 @@
 package com.sparta.clonetesla;
 
-import com.sparta.clonetesla.entity.Category;
-import com.sparta.clonetesla.repository.CategoryRepository;
 import com.sparta.clonetesla.repository.ProductRepository;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
