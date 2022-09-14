@@ -54,6 +54,9 @@ public class Product {
     private String importedBy;
 
     @Column(nullable = false)
+    private String content;
+
+    @Column(nullable = false)
     private String origin;
 
     @Column

@@ -60,7 +60,7 @@ public class MemberService {
         if (!member.validatePassword(passwordEncoder, requestDto.getPassword())) {
             return ResponseDto.fail("INVALID_MEMBER", "사용자를 찾을 수 없습니다.");
         }
-
+        System.out.println("feijfeijfiejfie");
         TokenDto tokenDto = tokenProvider.generateTokenDto(member);
         tokenToHeaders(tokenDto, response); // response 헤더에 토큰 넣기
 
