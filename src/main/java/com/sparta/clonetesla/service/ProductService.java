@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 @RequiredArgsConstructor
+@Service
 public class ProductService {
 
     private final ProductRepository productRepository;

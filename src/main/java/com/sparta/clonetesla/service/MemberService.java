@@ -5,9 +5,11 @@ import com.sparta.clonetesla.controller.request.MemberRequestDto;
 import com.sparta.clonetesla.controller.request.TokenDto;
 import com.sparta.clonetesla.controller.response.MemberResponseDto;
 import com.sparta.clonetesla.controller.response.ResponseDto;
+import com.sparta.clonetesla.entity.Cart;
 import com.sparta.clonetesla.entity.Member;
 import com.sparta.clonetesla.entity.UserDetailsImpl;
 import com.sparta.clonetesla.jwt.TokenProvider;
+import com.sparta.clonetesla.repository.CartRepository;
 import com.sparta.clonetesla.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,7 +27,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
-
+    private final CartRepository cartRepository;
     public ResponseDto<?> signup(MemberRequestDto requestDto) {
         if (null != isPresentMember(requestDto.getNickname())) {
             return ResponseDto.fail("DUPLICATED_NICKNAME",
@@ -40,6 +42,9 @@ public class MemberService {
                 .build();
 
         memberRepository.save(member);
+        Cart cart = new Cart(); // 유저마다 장바구니를 하나 만들어준다.
+        cartRepository.save(cart);
+
         return ResponseDto.success(
                 MemberResponseDto.builder()
                         .id(member.getId())

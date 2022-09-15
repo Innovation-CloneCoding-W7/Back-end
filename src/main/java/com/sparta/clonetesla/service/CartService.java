@@ -32,13 +32,16 @@ public class CartService {
         Cart cart = cartRepository.findById(user.getId()).orElseThrow( // cartId와 userId는 동일하게 세팅되어 있습니다.
                 () -> new NullPointerException("카트가 존재하지 않습니다.")
         );
-
         List<CartItem> cartItems = cart.getCartItems();
         List<CartResponseDto> cartResponseDtos = new ArrayList<>();
 
         for(int i = 0; i < cartItems.size(); i++) {
+            System.out.println("eifjeifjei");
             Long productId = cartItems.get(i).getProductId();
             int quantity = cartItems.get(i).getQuantity();
+            System.out.println(productId);
+            System.out.println(quantity);
+
             Product item = itemRepository.findById(productId).orElseThrow(
                     () -> new NullPointerException("제품이 존재하지 않습니다.")
             );
@@ -59,41 +62,41 @@ public class CartService {
             throw new CustomException(ErrorCode.NOT_FOUND_QUANTITY);
         }
 
-//        Cart cart = cartRepository.findById(user.getId()).orElseThrow( // cartId와 userId는 동일하게 세팅되어 있습니다.
-//                () -> new CustomException(ErrorCode.NOT_FOUND_CART)
-//        );
-//
-//        List<CartItem> cartItems = cart.getCartItems();
-////중복검사
-//        int cartItemId = -1;
-//
-//        for(int i = 0; i < cartItems.size(); i++) {
-//            if(cartItems.get(i).getItemId() == item.get().getId() ) {
-//                cartItemId = i;
-//            }
-//        }
-//
-//        if(cartItemId != -1) {
-//            cartItems.get(cartItemId).setQuantity(cartItems.get(cartItemId).getQuantity() + quantity);
-//            cartItemRepository.save(cartItems.get(cartItemId));
-//        } else {
+        Cart cart = cartRepository.findById(user.getId()).orElseThrow( // cartId와 userId는 동일하게 세팅되어 있습니다.
+                () -> new CustomException(ErrorCode.NOT_FOUND_CART)
+        );
+
+        List<CartItem> cartItems = cart.getCartItems();
+        //중복검사
+        int cartItemId = -1;
+
+        for (int i = 0; i < cartItems.size(); i++) {
+            if (cartItems.get(i).getProductId() == item.get().getId()) {
+                cartItemId = i;
+            }
+        }
+
+        if (cartItemId != -1) {//중복이 있는 경우
+            cartItems.get(cartItemId).setQuantity(quantity);
+            cartItemRepository.save(cartItems.get(cartItemId));
+        } else {// 중복이 없는 경우
             CartItem cartItem = new CartItem(user.getId(), item.get().getId(), quantity);
             cartItemRepository.save(cartItem);
-        ResponseDto.success("add Success");
+            ResponseDto.success("add Success");
+        }
     }
 
     // Cart Item 삭제
-    @Transactional
-    public void deleteItem(UserDetailsImpl userDetails,  Long cartItemId) {
-        Member user = userDetails.getMember();
-        CartItem cartItem = cartItemRepository.findById(cartItemId).orElseThrow(
-                () -> new CustomException(ErrorCode.NOT_FOUND_CARTITEM)
-        );
-
-        if(!Objects.equals(user.getId(), cartItem.getUserId())) throw new CustomException(ErrorCode.NOT_USER_CART);
-
-        cartItemRepository.deleteById(cartItemId);
-        ResponseDto.success("Delete Success");
-    }
+//    @Transactional
+//    public void deleteItem(UserDetailsImpl userDetails,  String productName) {
+//        Member user = userDetails.getMember();
+//        Optional<Product> item = itemRepository.findByProductName(productName);
+//        Optional<CartItem> cartItem = cartItemRepository.findByProduct(item.get());
+//
+//        if(!Objects.equals(user.getId(), cartItem.get().getUserId())) throw new CustomException(ErrorCode.NOT_USER_CART);
+//
+//        cartItemRepository.deleteById(cartItem.get().getCartItemId());
+//        ResponseDto.success("Delete Success");
+//    }
 }
 

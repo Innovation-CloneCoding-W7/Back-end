@@ -19,7 +19,7 @@ public class CartController {
     private final CartService cartService;
 
     // 상품 추가
-    @PostMapping("/cart/{productName}")
+    @PostMapping("/cart")
     public void saveItem(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody CartRequestDto requestDto) {
         if(userDetails == null){
             throw new CustomException(ErrorCode.UNAUTHORIZED);
@@ -38,12 +38,12 @@ public class CartController {
 
 
     // 상품 삭제, @PathVariable String productName으로 변경
-    @DeleteMapping("/cart/{productName}")
-    public void deleteItem(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable String productName) {
-        if(userDetails == null){
-            throw new CustomException(ErrorCode.UNAUTHORIZED);
-        }
-        cartService.deleteItem(userDetails, Long.valueOf(productName));
-    }
+//    @DeleteMapping("/cart/{productName}")
+//    public void deleteItem(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable String productName) {
+//        if(userDetails == null){
+//            throw new CustomException(ErrorCode.UNAUTHORIZED);
+//        }
+//        cartService.deleteItem(userDetails, productName);
+//    }
 }
 
