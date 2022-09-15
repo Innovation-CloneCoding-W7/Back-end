@@ -38,8 +38,8 @@ public class CartController {
 
 
     // 상품 삭제, @PathVariable String productName으로 변경
-    @DeleteMapping("/cart/{productName}")
-    public void deleteItem(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable String productName) {
+    @DeleteMapping("/cart")
+    public void deleteItem(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestParam (value = "name") String productName) {
         if(userDetails == null){
             throw new CustomException(ErrorCode.UNAUTHORIZED);
         }

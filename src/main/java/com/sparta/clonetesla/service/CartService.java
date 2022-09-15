@@ -64,15 +64,14 @@ public class CartService {
         Cart cart = cartRepository.findById(user.getId()).orElseThrow( // cartId와 userId는 동일하게 세팅되어 있습니다.
                 () -> new CustomException(ErrorCode.NOT_FOUND_CART)
         );
-        
-        System.out.println(cart.getCartId());
         List<CartItem> cartItems = cart.getCartItems();
-        System.out.println(cartItems.size());
+
+
         //중복검사
         int cartItemId = -1;
 
-        for (int i = 0; i < cartItems.size(); i++) {
-            if (cartItems.get(i).getProductId() == item.get().getId()) {
+        for (int i = 0; i < cartItems.size(); i++) {// cartItems들을 돌면서 같은 cartItem이 있는지 확인
+            if (Objects.equals(cartItems.get(i).getProductId(), item.get().getId())) {
                 cartItemId = i;
             }
         }
@@ -81,7 +80,7 @@ public class CartService {
             cartItems.get(cartItemId).setQuantity(quantity);
             cartItemRepository.save(cartItems.get(cartItemId));
         } else {// 중복이 없는 경우
-            CartItem cartItem = new CartItem(user.getId(), item.get().getId(), quantity);
+            CartItem cartItem = new CartItem(user.getId(), item.get().getId(), quantity, cart);
             cartItemRepository.save(cartItem);
             ResponseDto.success("add Success");
         }
@@ -89,11 +88,10 @@ public class CartService {
 
     // Cart Item 삭제
     @Transactional
-    public void deleteItem(UserDetailsImpl userDetails,  String productName) {
+    public void deleteItem(UserDetailsImpl userDetails, String productName) {
         Member user = userDetails.getMember();
         Optional<Product> item = itemRepository.findByProductName(productName);
-        Optional<CartItem> cartItem = cartItemRepository.findByProductId(item.get().getId());
-
+        Optional<CartItem> cartItem = cartItemRepository.findByProductIdAndUserId(item.get().getId(), user.getId());
         if(!Objects.equals(user.getId(), cartItem.get().getUserId())) throw new CustomException(ErrorCode.NOT_USER_CART);
 
         cartItemRepository.deleteById(cartItem.get().getCartItemId());
