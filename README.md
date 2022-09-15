@@ -1,5 +1,5 @@
 # Tesla Clone-Coding [Back-end]
-![tesla](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc3HygR%2FbtrMeQpOuDl%2Fft15DIv3caDgPPskmCGSgk%2Fimg.jpg)
+![tesla](https://blog.kakaocdn.net/dn/rbMOf/btrMfNe5qtA/7H47AHr3D2kewHzW5LBIz0/img.png)
 
 ***
 
