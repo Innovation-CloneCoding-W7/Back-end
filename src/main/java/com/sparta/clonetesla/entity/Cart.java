@@ -17,6 +17,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
+    @Column
     @OneToMany(cascade = CascadeType.ALL)
     private List<CartItem> cartItems;
 }

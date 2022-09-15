@@ -23,9 +23,4 @@ public class CartResponseDto {
         this.imageUrl = product.getImageUrl();
         this.quantity = quantity;
     }
-
-
-
-    public CartResponseDto(Long id, Product quantity) {
-    }
 }

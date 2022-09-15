@@ -43,7 +43,7 @@ public class CartController {
         if(userDetails == null){
             throw new CustomException(ErrorCode.UNAUTHORIZED);
         }
-        cartService.deleteItem(userDetails, Long.valueOf(productName));
+        cartService.deleteItem(userDetails, productName);
     }
 }
 
