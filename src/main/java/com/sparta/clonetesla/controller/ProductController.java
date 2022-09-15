@@ -13,13 +13,13 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @RequestMapping(value = "/product/category/{categoryName}", method = RequestMethod.GET)
-    public ResponseDto<?> getProductByCategory(@PathVariable String categoryName) {
+    @RequestMapping(value = "/product/category", method = RequestMethod.GET)
+    public ResponseDto<?> getProductByCategory(@RequestParam (value ="name") String categoryName) {
         return productService.getProductsByCategory(categoryName);
     }
 
-    @RequestMapping(value = "/product/{productName}", method = RequestMethod.GET)
-    public ResponseDto<?> getProductDetail(@PathVariable String productName) {
+    @RequestMapping(value = "/product", method = RequestMethod.GET)
+    public ResponseDto<?> getProductDetail(@RequestParam (value = "name") String productName) {
         return productService.getProductDetail(productName);
     }
 

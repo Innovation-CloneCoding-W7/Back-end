@@ -24,7 +24,6 @@ public class ProductService {
     @Transactional(readOnly = true)
     public ResponseDto<?> getProductsByCategory(String category) {
         if (category == null) {
-            System.out.println(category);
             return ResponseDto.fail("NOT_FOUND", "This page does not exist.");
         }
 
