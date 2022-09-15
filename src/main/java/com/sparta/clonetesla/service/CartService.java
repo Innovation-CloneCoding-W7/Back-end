@@ -64,6 +64,7 @@ public class CartService {
         Cart cart = cartRepository.findById(user.getId()).orElseThrow( // cartId와 userId는 동일하게 세팅되어 있습니다.
                 () -> new CustomException(ErrorCode.NOT_FOUND_CART)
         );
+        
         System.out.println(cart.getCartId());
         List<CartItem> cartItems = cart.getCartItems();
         System.out.println(cartItems.size());
