@@ -87,16 +87,16 @@ public class CartService {
     }
 
     // Cart Item 삭제
-//    @Transactional
-//    public void deleteItem(UserDetailsImpl userDetails,  String productName) {
-//        Member user = userDetails.getMember();
-//        Optional<Product> item = itemRepository.findByProductName(productName);
-//        Optional<CartItem> cartItem = cartItemRepository.findByProduct(item.get());
-//
-//        if(!Objects.equals(user.getId(), cartItem.get().getUserId())) throw new CustomException(ErrorCode.NOT_USER_CART);
-//
-//        cartItemRepository.deleteById(cartItem.get().getCartItemId());
-//        ResponseDto.success("Delete Success");
-//    }
+    @Transactional
+    public void deleteItem(UserDetailsImpl userDetails,  String productName) {
+        Member user = userDetails.getMember();
+        Optional<Product> item = itemRepository.findByProductName(productName);
+        Optional<CartItem> cartItem = cartItemRepository.findByProductId(item.get().getId());
+
+        if(!Objects.equals(user.getId(), cartItem.get().getUserId())) throw new CustomException(ErrorCode.NOT_USER_CART);
+
+        cartItemRepository.deleteById(cartItem.get().getCartItemId());
+        ResponseDto.success("Delete Success");
+    }
 }
 
