@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -32,16 +34,13 @@ public class CartService {
         Cart cart = cartRepository.findById(user.getId()).orElseThrow( // cartId와 userId는 동일하게 세팅되어 있습니다.
                 () -> new NullPointerException("카트가 존재하지 않습니다.")
         );
+
         List<CartItem> cartItems = cart.getCartItems();
         List<CartResponseDto> cartResponseDtos = new ArrayList<>();
 
         for(int i = 0; i < cartItems.size(); i++) {
-            System.out.println("eifjeifjei");
             Long productId = cartItems.get(i).getProductId();
             int quantity = cartItems.get(i).getQuantity();
-            System.out.println(productId);
-            System.out.println(quantity);
-
             Product item = itemRepository.findById(productId).orElseThrow(
                     () -> new NullPointerException("제품이 존재하지 않습니다.")
             );
@@ -65,8 +64,9 @@ public class CartService {
         Cart cart = cartRepository.findById(user.getId()).orElseThrow( // cartId와 userId는 동일하게 세팅되어 있습니다.
                 () -> new CustomException(ErrorCode.NOT_FOUND_CART)
         );
-
+        System.out.println(cart.getCartId());
         List<CartItem> cartItems = cart.getCartItems();
+        System.out.println(cartItems.size());
         //중복검사
         int cartItemId = -1;
 
